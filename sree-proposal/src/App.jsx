@@ -8,18 +8,17 @@ export default function App() {
   const [answeredYes, setAnsweredYes] = useState(false);
 
   const startProposal = () => {
-    const audio = new Audio("/bg-music.mp3");
+    const audio = new Audio(import.meta.env.BASE_URL + "bg-music.mp3");
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = 0.9;
 
-    // Start music from 19 seconds
     audio.currentTime = 19;
     audio.play().catch(() => {});
     setStarted(true);
     createFloatingHearts();
 
     setTimeout(() => setShowMessage(true), 1000);
-    setTimeout(() => setFinalStep(true), 25000); // more time for reading 💌
+    setTimeout(() => setFinalStep(true), 25000);
   };
 
   const createFloatingHearts = () => {
