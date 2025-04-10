@@ -63,7 +63,7 @@ export default function App() {
         <h2>💌 Hey love, this surprise is just for you.</h2>
         <input
           type="password"
-          placeholder="Enter secret word..."
+          placeholder="Enter our password😉😉..."
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="password-input"
@@ -78,7 +78,7 @@ export default function App() {
                 setUnlocked(true);
               }, 1000);
             } else {
-              setError("❌ Oops! That’s not it, my love 💭 Try again!");
+              setError("❌ Oops! That’s not it, my love 💭 it's us!!!");
             }
           }}
         >
@@ -96,7 +96,7 @@ export default function App() {
           <span className="click-text">Click to begin 💖</span>
         </div>
       ) : !showMessage ? (
-        <h2 className="fade">Starting your surprise...</h2>
+        <h2 className="fade">Starting your surprise 😉😉😉...</h2>
       ) : !finalStep ? (
         <div className="love-message typewriter">
           <h1>Dear Sree,</h1>
@@ -141,7 +141,7 @@ export default function App() {
             </button>
             <button
               className="no-btn"
-              onClick={() => alert("Wrong choice 😜 Try again!")}
+              onClick={() => alert("Wrong Choice HUH!Please babe don't do this🥺🥺🥺🥺")}
             >
               Hmm... Think again 😜
             </button>
@@ -152,7 +152,7 @@ export default function App() {
           <h1>You said YES!!! 🥹❤️</h1>
           <p>
             This is the happiest moment of my life.
-            <br />
+            <br />I LOVE YOU👩‍❤️‍💋‍👨👩‍❤️‍💋‍👨 <br />
             Forever yours, Shivvu 💘
           </p>
         </div>
