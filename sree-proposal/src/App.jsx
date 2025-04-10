@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./index.css";
 
 export default function App() {
+  const [unlocked, setUnlocked] = useState(false);
+  const [unlocking, setUnlocking] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [started, setStarted] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [finalStep, setFinalStep] = useState(false);
@@ -11,12 +15,10 @@ export default function App() {
     const audio = new Audio(import.meta.env.BASE_URL + "bg-music.mp3");
     audio.loop = true;
     audio.volume = 0.9;
-
     audio.currentTime = 19;
     audio.play().catch(() => {});
     setStarted(true);
     createFloatingHearts();
-
     setTimeout(() => setShowMessage(true), 1000);
     setTimeout(() => setFinalStep(true), 25000);
   };
@@ -32,7 +34,7 @@ export default function App() {
 
   const handleYes = () => {
     setAnsweredYes(true);
-    confetti(); // call confetti
+    confetti();
   };
 
   const confetti = () => {
@@ -54,6 +56,38 @@ export default function App() {
       }
     })();
   };
+
+  if (!unlocked) {
+    return (
+      <div className={`password-screen ${unlocking ? "fade-out" : ""}`}>
+        <h2>💌 Hey love, this surprise is just for you.</h2>
+        <input
+          type="password"
+          placeholder="Enter secret word..."
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="password-input"
+        />
+        <button
+          className="unlock-btn"
+          onClick={() => {
+            if (password.toLowerCase() === "sreevu") {
+              setUnlocking(true);
+              setError("");
+              setTimeout(() => {
+                setUnlocked(true);
+              }, 1000);
+            } else {
+              setError("❌ Oops! That’s not it, my love 💭 Try again!");
+            }
+          }}
+        >
+          Unlock ✨
+        </button>
+        {error && <p className="error-text">{error}</p>}
+      </div>
+    );
+  }
 
   return (
     <div className="container">
